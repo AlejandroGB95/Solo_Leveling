@@ -1,0 +1,128 @@
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
+body {
+  background: url('imagen/solo_leveling.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Barra lateral */
+nav {
+  position: fixed;
+  top:0; left:0;
+  width:200px;
+  height:100%;
+  background: rgba(0,0,0,0.85);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:20px;
+  z-index:1000;
+  transform: translateX(-180px);
+  transition: transform 0.3s;
+}
+
+nav.active { transform: translateX(0); }
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 10px;
+  width:100%;
+  text-align:center;
+  margin-bottom:10px;
+  border-radius:8px;
+  transition: 0.3s;
+}
+
+nav a:hover { background: rgba(255,153,0,0.8); }
+
+nav .icon-link img {
+  width:40px;
+  height:40px;
+  margin-bottom:10px;
+  transition: transform 0.3s;
+}
+
+nav .icon-link img:hover { transform: scale(1.2); }
+
+/* Contenido principal */
+main {
+  margin-left:20px; /* deja 20px visibles */
+  padding:40px;
+  transition: margin-left 0.3s;
+}
+
+main.shifted { margin-left:220px; }
+
+/* Secciones */
+section {
+  backdrop-filter: blur(5px);
+  background: rgba(0,0,0,0.6);
+  margin-bottom:40px;
+  border-radius:15px;
+  padding:30px;
+}
+
+h1,h2 { text-shadow: 2px 2px 8px #000; margin-bottom:20px; }
+p { font-size:1.2rem; margin-bottom:20px; }
+
+/* Videos */
+.video-container {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+}
+
+iframe {
+  border-radius:15px;
+  width:400px;
+  height:225px;
+}
+
+/* Música de fondo */
+#music-control {
+  position: fixed;
+  bottom:20px;
+  right:20px;
+  background: rgba(0,0,0,0.7);
+  padding:10px 15px;
+  border-radius:50px;
+  cursor:pointer;
+  z-index:1001;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+#music-control:hover {
+  background: rgba(255,153,0,0.8);
+  transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+  width:100%;
+  background: rgba(0,0,0,0.8);
+  text-align:center;
+  padding:15px;
+  color:#fff;
+  position: absolute;
+  bottom:0;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  main { margin-left:0; padding:20px; }
+  nav { transform: translateX(0); width:100%; flex-direction:row; justify-content:space-around; padding:10px; }
+  iframe { width:100%; height:200px; }
+}
+
+span {
+
+  color: red;
+  text-decoration: overline;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
