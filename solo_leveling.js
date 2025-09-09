@@ -20,3 +20,8 @@ document.body.addEventListener('mousemove', e => {
     main.classList.remove('shifted');
   }
 });
+
+const menuToggle = document.getElementById('menu-toggle');
+menuToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('active');
+});
