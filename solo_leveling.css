@@ -127,26 +127,35 @@ span {
 
 }
 
+/* Barra lateral */
+nav {
+  position: fixed;
+  top:0; left:0;
+  width:200px;
+  height:100%;
+  background: rgba(0,0,0,0.85);
+  display:flex;
+  flex-direction: column; /* Apilados verticales */
+  align-items:center;
+  padding-top:20px;
+  z-index:1000;
+  transform: translateX(-180px);
+  transition: transform 0.3s;
+}
+
+nav.active { transform: translateX(0); }
+
 /* Para pantallas pequeñas */
 @media(max-width:768px){
   nav {
-    transform: translateX(-100%); /* Oculta la barra al inicio */
+    transform: translateX(-100%); /* Oculta barra al inicio */
     width: 200px;
-    top:0;
-    left:0;
-    transition: transform 0.3s;
+    height: 100%;
+    flex-direction: column; /* Mantener vertical */
+    align-items: center;
+    padding-top: 20px;
   }
 
-  nav.active {
-    transform: translateX(0); /* Se desliza al activarla */
-  }
-
-  main {
-    margin-left:0;
-    padding:20px;
-  }
-
-  /* Mostrar un botón para abrir/cerrar la barra */
   #menu-toggle {
     display:block;
     position: fixed;
