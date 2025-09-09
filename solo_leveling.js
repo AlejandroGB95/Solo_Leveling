@@ -1,38 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const sidebar = document.getElementById('sidebar');
-  const main = document.getElementById('main-content');
-  const menuToggle = document.getElementById('menu-toggle');
-  const music = document.getElementById('bg-music');
-  const musicControl = document.getElementById('music-control');
+  const sidebar = document.getElementById("sidebar");
+  const menuToggle = document.getElementById("menu-toggle");
+  const main = document.getElementById("main-content");
+
+  // Alternar sidebar al click del botón
+  menuToggle.addEventListener("click", (e) => {
+    sidebar.classList.toggle("active");
+    main.classList.toggle("shifted");
+    e.stopPropagation();
+  });
+
+  // Cerrar sidebar al clicar fuera
+  document.addEventListener("click", (e) => {
+    if (sidebar.classList.contains("active") && !sidebar.contains(e.target) && e.target !== menuToggle) {
+      sidebar.classList.remove("active");
+      main.classList.remove("shifted");
+    }
+  });
+
+  // Música
+  const music = document.getElementById("bg-music");
+  const musicControl = document.getElementById("music-control");
   let playing = false;
 
-  // Control de música
-  musicControl.addEventListener('click', () => {
-    if(playing){ 
-      music.pause(); 
-      musicControl.textContent='🎵 Play'; 
-    } else { 
-      music.play(); 
-      musicControl.textContent='🎵 Pause'; 
-    }
+  musicControl.addEventListener("click", () => {
+    if(playing) { music.pause(); musicControl.textContent='🎵 Play'; }
+    else { music.play(); musicControl.textContent='🎵 Pause'; }
     playing = !playing;
-  });
-
-  // Botón menú (solo móviles)
-  menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-  });
-
-  // Hover en escritorio (opcional)
-  document.body.addEventListener('mousemove', e => {
-    if(window.innerWidth > 768){ // solo escritorio
-      if(e.clientX <= 20){ 
-        sidebar.classList.add('active');
-        main.classList.add('shifted');
-      } else if(!sidebar.matches(':hover')){
-        sidebar.classList.remove('active');
-        main.classList.remove('shifted');
-      }
-    }
   });
 });
