@@ -25,13 +25,13 @@ nav {
   flex-direction: column;
   align-items:center;
   padding-top:20px;
-  z-index:1000;
-  transform: translateX(-180px);
-  transition: transform 0.3s;
+  z-index:1500;
+  left: -250px; /* oculta inicialmente en móviles */
+  transition: left 0.3s ease;
 }
 
 nav.active { 
-  transform: translateX(0); 
+  left: 0; 
 }
 
 nav a {
@@ -50,25 +50,29 @@ nav a:hover {
 }
 
 /* Iconos en la barra lateral */
+nav .icon-link {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
 nav .icon-link img {
-  width: 60%;       
-  max-width: 50px;  
-  height: auto;     
-  margin-bottom: 10px;
+  width: 80%;
+  max-width: 80px;
+  height: auto;
   border-radius: 5px;
-  padding: 2px;
-  display: block;
   transition: transform 0.3s;
 }
 
-nav .icon-link img:hover { 
-  transform: scale(1.2); 
+nav .icon-link img:hover {
+  transform: scale(1.2);
 }
 
 /* Contenido principal */
 main {
   margin-left:20px; 
-  padding:40px;
+  padding:60px 40px 40px 40px; /* espacio arriba para botón */
   transition: margin-left 0.3s;
 }
 
@@ -138,81 +142,13 @@ footer {
   position: relative;
 }
 
-/* Botón menú móvil */
+/* Botón menú */
 #menu-toggle {
-  display:none;
-}
-
-/* Responsive */
-@media(max-width:768px){
-  main { 
-    margin-left:0; 
-    padding:20px; 
-  }
-
-  nav {
-    transform: translateX(-100%); /* Oculta barra al inicio */
-    width:200px;
-    height:100%;
-    flex-direction: column;
-    align-items: center;
-    padding-top:20px;
-  }
-
-  nav.active {
-    transform: translateX(0);
-  }
-
-  #menu-toggle {
-    display:block;
-    position: fixed;
-    top:20px;
-    left:20px;
-    z-index:1001;
-    background: rgba(0,0,0,0.7);
-    color:#fff;
-    border:none;
-    padding:10px 15px;
-    border-radius:5px;
-    cursor:pointer;
-  }
-
-  iframe { 
-    width:100%; 
-    height:200px; 
-  }
-}
-
-/* Estilo adicional para textos especiales */
-span {
-  color: red;
-  text-decoration: overline;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-nav .icon-link {
-  width: 100%;           /* El enlace ocupa todo el ancho de la barra */
-  display: flex;         /* Usamos flex para centrar el contenido */
-  justify-content: center; /* Centra horizontalmente el icono */
-  margin-bottom: 15px;   /* Separación entre iconos */
-}
-
-nav .icon-link img {
-  width: 80%;            /* Más grande que antes */
-  max-width: 80px;       /* No demasiado grande */
-  height: auto;
-  display: block;
-  border-radius: 5px;
-  transition: transform 0.3s;
-}
-
-
-/* Botón hamburguesa */
-#menu-toggle {
+  display:none; /* por defecto oculto */
   position: fixed;
   top: 15px;
   left: 15px;
-  z-index: 2000;  /* Siempre encima del sidebar */
+  z-index: 2000;
   background: #111;
   color: white;
   border: none;
@@ -227,33 +163,19 @@ nav .icon-link img {
   background: #333;
 }
 
-/* Sidebar cerrado en móviles */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: -250px; /* Oculto fuera de la pantalla */
-  width: 250px;
-  height: 100%;
-  background: #111;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-  transition: left 0.3s ease;
-  z-index: 1500;
-}
-
-#sidebar.active {
-  left: 0; /* Se muestra */
-}
-
-/* Botón hamburguesa visible solo en móviles */
-#menu-toggle {
-  display: none; /* por defecto oculto */
-}
-
+/* Responsive */
 @media(max-width:768px){
+  main {
+    margin-left:0;
+    padding:80px 20px 20px 20px; /* más espacio arriba */
+  }
+
+  iframe { 
+    width:100%; 
+    height:200px; 
+  }
+
   #menu-toggle {
-    display: block; /* aparece en móviles */
+    display:block;
   }
 }
